@@ -1,0 +1,16 @@
+import { Project } from "slack-cloud-sdk/mod.ts";
+import { DinoFunction } from "./functions/dino.ts";
+import { TimeOffWorkflow } from "./workflows/time_off_workflow.ts";
+import { TimeOffShortcut } from "./triggers/time_off_shortcut.ts";
+
+Project({
+  name: "Time-off Request",
+  description: "A very basic time-off request app",
+  icon: "assets/icon.png",
+  runtime: "deno1.x",
+  botScopes: ["commands", "chat:write", "chat:write.public"],
+  functions: [DinoFunction],
+  workflows: [TimeOffWorkflow],
+  triggers: [TimeOffShortcut],
+  outgoingDomains: [],
+});
