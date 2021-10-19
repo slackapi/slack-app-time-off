@@ -1,5 +1,5 @@
 import { DefineWorkflow, Schema } from "slack-cloud-sdk/mod.ts";
-// import { DinoFunction } from "../functions/dino.ts";
+import { TimeOffSaveFunction } from "../functions/time_off_save.ts";
 
 // Workflow Definition
 export const TimeOffWorkflow = DefineWorkflow("time_off_workflow", {
@@ -33,12 +33,17 @@ export const TimeOffWorkflow = DefineWorkflow("time_off_workflow", {
   },
 });
 
-// Workflow Step 1
-// const step1 = TimeOffWorkflow.addStep(DinoFunction, {
-//   name: TimeOffWorkflow.inputs.date,
-// });
+// Workflow Step 1 - Save data to a table
+TimeOffWorkflow.addStep(TimeOffSaveFunction, {
+  date: TimeOffWorkflow.inputs.date,
+  days: TimeOffWorkflow.inputs.days,
+  category: TimeOffWorkflow.inputs.category,
+  comments: TimeOffWorkflow.inputs.comments,
+  channel: TimeOffWorkflow.inputs.channel,
+  user_id: TimeOffWorkflow.inputs.user_id,
+});
 
-// Workflow Step 2
+// Workflow Step 2 - Send message for approval
 TimeOffWorkflow.addStep(Schema.slack.functions.SendMessage, {
   channel_id: TimeOffWorkflow.inputs.channel,
   message:
