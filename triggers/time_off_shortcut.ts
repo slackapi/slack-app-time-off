@@ -19,4 +19,5 @@ export const TimeOffShortcut = DefineTrigger("time_off_shortcut", {
     days: "1",
     category: "Paid Time Off",
     channel: ctx.data.channel_id,
+    user_id: ctx.data.user_id,
   }));

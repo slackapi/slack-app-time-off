@@ -26,6 +26,10 @@ export const TimeOffWorkflow = DefineWorkflow("time_off_workflow", {
       type: Schema.slack.types.channel_id,
       description: "Channel to send time-off request",
     },
+    user_id: {
+      type: Schema.slack.types.user_id,
+      description: "Who is requesting time off?",
+    },
   },
 });
 
@@ -38,5 +42,5 @@ export const TimeOffWorkflow = DefineWorkflow("time_off_workflow", {
 TimeOffWorkflow.addStep(Schema.slack.functions.SendMessage, {
   channel_id: TimeOffWorkflow.inputs.channel,
   message:
-    `You have a new *${TimeOffWorkflow.inputs.category}* request from *@Someone* starting *${TimeOffWorkflow.inputs.date}* for *${TimeOffWorkflow.inputs.days} days*.\n_${TimeOffWorkflow.inputs.comments}_`,
+    `You have a new *${TimeOffWorkflow.inputs.category}* request from *<@${TimeOffWorkflow.inputs.user_id}>* starting *${TimeOffWorkflow.inputs.date}* for *${TimeOffWorkflow.inputs.days} days*.\n_${TimeOffWorkflow.inputs.comments}_`,
 });
