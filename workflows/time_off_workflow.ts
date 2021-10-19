@@ -11,7 +11,7 @@ export const TimeOffWorkflow = DefineWorkflow("time_off_workflow", {
       description: "What is the starting date?",
     },
     days: {
-      type: Schema.types.number,
+      type: Schema.types.string,
       description: "How many days?",
     },
     category: {

@@ -7,7 +7,7 @@ const client = new SlackAPIClient("");
 Deno.test("Time-off Save Function should fail because not authorized", async () => {
   const inputs = {
     date: "December 14",
-    days: 5,
+    days: "5",
     category: "Paid Time Off",
     comments: "Holiday vacation",
     channel: "C02AL6F9XU9",

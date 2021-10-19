@@ -11,7 +11,7 @@ export const TimeOffTable = DefineTable("time-off", {
       type: Schema.types.string,
     },
     days: {
-      type: Schema.types.number,
+      type: Schema.types.string,
     },
     category: {
       type: Schema.types.string,

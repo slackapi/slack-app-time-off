@@ -13,7 +13,7 @@ export const TimeOffSaveFunction = DefineFunction(
         description: "Starting date",
       },
       days: {
-        type: Schema.types.number,
+        type: Schema.types.string,
         description: "Number of days",
       },
       category: {
