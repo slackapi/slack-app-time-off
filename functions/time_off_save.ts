@@ -1,5 +1,4 @@
 import { DefineFunction, Schema } from "slack-cloud-sdk/mod.ts";
-import { TimeOffTable } from "../tables/time_off_table.ts";
 
 // Function Definition
 export const TimeOffSaveFunction = DefineFunction(
@@ -24,7 +23,7 @@ export const TimeOffSaveFunction = DefineFunction(
         type: Schema.types.string,
         description: "Additional comments",
       },
-      channel: {
+      channel_id: {
         type: Schema.slack.types.channel_id,
         description: "Channel to send time-off request",
       },
@@ -40,29 +39,15 @@ export const TimeOffSaveFunction = DefineFunction(
       },
     },
   },
-  async ({ inputs, client }) => {
-    const table = TimeOffTable.api(client);
-    const uniqueId = (new Date()).getTime();
-
-    // Save data to a table with result:
-    // - Success: {"ok": true, "table": "name", "row": {"date": "value", ... }}
-    // - Error:   {"ok": false, "error": "reason"}
-    const result = await table.put({
-      id: uniqueId,
-      date: inputs.date,
-      days: inputs.days,
-      category: inputs.category,
-      comments: inputs.comments,
-      channel: inputs.channel,
-      user_id: inputs.user_id,
-    });
-
+  async ({ inputs }) => {
     // Output to activity logs
-    console.log("time-off-save › result:", JSON.stringify(result));
+    console.log("functions › time-off-save › inputs:", JSON.stringify(inputs));
+
+    // TODO - Store the input data into a table
 
     return await {
       outputs: {
-        ok: result.ok,
+        ok: true,
       },
     };
   },

@@ -19,7 +19,7 @@ export const TimeOffTable = DefineTable("time-off", {
     comments: {
       type: Schema.types.string,
     },
-    channel: {
+    channel_id: {
       type: Schema.slack.types.channel_id,
     },
     user_id: {

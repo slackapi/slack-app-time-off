@@ -2,7 +2,6 @@ import { Project } from "slack-cloud-sdk/mod.ts";
 import { TimeOffSaveFunction } from "./functions/time_off_save.ts";
 import { TimeOffWorkflow } from "./workflows/time_off_workflow.ts";
 import { TimeOffShortcut } from "./triggers/time_off_shortcut.ts";
-import { TimeOffTable } from "./tables/time_off_table.ts";
 
 Project({
   name: "Time-off Request",
@@ -12,7 +11,6 @@ Project({
   botScopes: ["commands", "chat:write", "chat:write.public"],
   functions: [TimeOffSaveFunction],
   workflows: [TimeOffWorkflow],
-  tables: [TimeOffTable],
   triggers: [TimeOffShortcut],
   outgoingDomains: [],
 });

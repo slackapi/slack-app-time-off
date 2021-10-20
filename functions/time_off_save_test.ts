@@ -10,7 +10,7 @@ Deno.test("Time-off Save Function should fail because not authorized", async () 
     days: "5",
     category: "Paid Time Off",
     comments: "Holiday vacation",
-    channel: "C02AL6F9XU9",
+    channel_id: "C02AL6F9XU9",
     user_id: "U029RM70G83",
   };
   const { outputs } = await TimeOffSaveFunction.run({
@@ -18,5 +18,5 @@ Deno.test("Time-off Save Function should fail because not authorized", async () 
     client,
     env: {},
   });
-  assertEquals(outputs?.ok, false);
+  assertEquals(outputs?.ok, true);
 });
