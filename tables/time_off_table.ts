@@ -7,6 +7,9 @@ export const TimeOffTable = DefineTable("time-off", {
     id: {
       type: Schema.types.number,
     },
+    approved: {
+      type: Schema.types.boolean,
+    },
     date: {
       type: Schema.types.string,
     },
