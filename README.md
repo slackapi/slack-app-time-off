@@ -1,4 +1,4 @@
-# Request Time-Off App for Slack Next Generation Platform
+# Time-Off App for Slack Next Generation Platform
 
 This repo contains a sample project and embedded lightweight SDK of a Typescript based project for the new Deno runtime.
 
@@ -6,10 +6,16 @@ The main file that brings it all together is the `project.ts` file.  So far only
 
 ## Getting Started
 
-You can get started by creating a new app from this template and then deploying it to the Slack Platform.
+You can get started by creating a new app from this template:
 
 ```bash
 $ hermes create -t slackapi/slack-app-time-off
+```
+
+Then deploy it to Slack:
+
+```bash
+$ hermes deploy
 ```
 
 ## Testing
