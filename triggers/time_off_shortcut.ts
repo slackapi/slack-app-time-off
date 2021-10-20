@@ -1,12 +1,6 @@
 import { DefineTrigger, TriggerTypes } from "slack-cloud-sdk/mod.ts";
 import { TimeOffWorkflow } from "../workflows/time_off_workflow.ts";
 
-// Default params for workflow
-const today = (new Date()).toLocaleDateString("en-US", {
-  month: "long",
-  day: "numeric",
-});
-
 // Shortcut Definition
 export const TimeOffShortcut = DefineTrigger("time_off_shortcut", {
   type: TriggerTypes.Shortcut,
@@ -15,10 +9,9 @@ export const TimeOffShortcut = DefineTrigger("time_off_shortcut", {
 })
   .runs(TimeOffWorkflow)
   .withInputs((ctx) => ({
-    date: today,
+    date: "December 1",
     days: "1",
     category: "Paid Time Off",
     channel_id: ctx.data.channel_id,
-    comments: "No extra comments",
     user_id: ctx.data.user_id,
   }));
